@@ -21,7 +21,11 @@
         min-height: 100vh;
         display: flex;
         justify-content: center;
-        align-items: center;
+
+        align-items: flex-start;
+        overflow-x: hidden;
+        overflow-y: auto;
+
         font-family:
           ui-sans-serif,
           system-ui,
@@ -36,13 +40,13 @@
           radial-gradient(circle at 20% 20%, var(--bg1), transparent 55%),
           radial-gradient(circle at 80% 20%, var(--bg2), transparent 55%),
           radial-gradient(circle at 50% 80%, #ffd1dc, transparent 60%), #fff;
-        overflow: hidden;
+        /* overflow: hidden; */
         padding: 24px;
       }
 
       /* floating hearts */
       .heart {
-        position: absolute;
+        position: fixed;
         width: 14px;
         height: 14px;
         background: var(--accent);
@@ -339,7 +343,7 @@
       @media (max-width: 860px) {
         body {
           padding: 14px;
-          align-items: flex-start;
+          align-items: center;
         }
 
         .card {
@@ -438,6 +442,10 @@
                 <li>You’re my safe place.</li>
                 <li>You're the most understanding person I know.</li>
                 <li>You always make me feel loved and appreciated.</li>
+                <li>
+                  Even though you're <strong>Khadus</strong>, you're still my
+                  favorite person in the world and I still love you so much.
+                </li>
               </ul>
               <div class="mini">(P.S. I have about a million more.)</div>
             </div>
@@ -445,9 +453,13 @@
             <div class="appriciationNote" style="margin-top: 14px">
               <div><strong>Little Appriciation</strong></div>
               <ul style="margin: 10px 0 0; line-height: 1.7">
-                I'm so proud of you for managing everything so well.
                 <li>
-                  Your dedication to your work and studies is truly admirable.
+                  <strong>I'm so proud of you</strong> for managing everything
+                  so well.
+                </li>
+                <li>
+                  Your dedication to your work and studies on each things is
+                  truly admirable.
                 </li>
                 <li>
                   Your ability to balance multiple responsibilities shows your
@@ -455,7 +467,8 @@
                 </li>
                 <li>
                   Your hard work is inspiring and motivates me to be better
-                  every day.
+                  every day.God bless you with all the success and happiness in
+                  the world, my love.
                 </li>
               </ul>
               <div class="mini">(Keep shining, love!)</div>
@@ -474,16 +487,24 @@
             <div class="questionBox">
               <p class="question">Will you be my Valentine?</p>
               <div class="btnRow" id="btnRow">
-                <button class="yes" id="yesBtn">YES 💘</button>
-                <button class="no" id="noBtn">No 🙈</button>
+                <button class="yes" id="yesBtn">YES 🥹</button>
+                <button class="no" id="noBtn">No 😏</button>
               </div>
-              <div class="hint">Tip: try clicking “No” 😄</div>
+              <div class="hint">Tip: try clicking “No” 🤪</div>
             </div>
 
             <div class="loveNote" style="margin-top: 16px">
               <div><strong>Our date plan:</strong></div>
               <div class="mini" id="datePlan">
                 Dinner + dessert + a long walk (and you choosing the movie)
+              </div>
+              <div class="mini" id="surprise">
+                There is Tiny Hidden <strong>Surprise</strong> for you but you
+                you have to find out where it is!
+              </div>
+              <div class="hint">
+                Hint: A place you loved alot to sit for chitchat😄 go outside
+                from your office and find out
               </div>
             </div>
           </div>
@@ -516,8 +537,9 @@
         datePlan: "Dinner + dessert + a long walk (and you choosing the movie)",
         modalText:
           "I can’t wait to celebrate with you. Happy Valentine’s Day, my love.",
-      photoUrl: "us.jpg",
-
+        surprise:
+          "A place you loved alot to sit for chitchat😄 go outside from your office and find out",
+        photoUrl: "us.jpg",
       };
 
       // Apply text
