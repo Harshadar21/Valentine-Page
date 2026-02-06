@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Be My Valentine 💘</title>
+    <style>
+      :root {
+        --bg1: #ff9a9e;
+        --bg2: #fad0c4;
+        --card: #ffffffcc;
+        --text: #2b2b2b;
+        --accent: #ff3b7a;
+        --accent2: #7c3aed;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          "Apple Color Emoji",
+          "Segoe UI Emoji";
+        color: var(--text);
+        background:
+          radial-gradient(circle at 20% 20%, var(--bg1), transparent 55%),
+          radial-gradient(circle at 80% 20%, var(--bg2), transparent 55%),
+          radial-gradient(circle at 50% 80%, #ffd1dc, transparent 60%), #fff;
+        overflow: hidden;
+        padding: 24px;
+      }
+
+      /* floating hearts */
+      .heart {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        background: var(--accent);
+        transform: rotate(45deg);
+        opacity: 0.18;
+        filter: blur(0.2px);
+        animation: floatUp linear infinite;
+      }
+      .heart:before,
+      .heart:after {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        background: var(--accent);
+        border-radius: 50%;
+      }
+      .heart:before {
+        left: -7px;
+        top: 0;
+      }
+      .heart:after {
+        top: -7px;
+        left: 0;
+      }
+
+      @keyframes floatUp {
+        from {
+          transform: translateY(120vh) rotate(45deg);
+        }
+        to {
+          transform: translateY(-20vh) rotate(45deg);
+        }
+      }
+
+      .wrap {
+        width: min(920px, 100%);
+        position: relative;
+      }
+      .card {
+        background: var(--card);
+        backdrop-filter: blur(10px);
+        border: 1px solid #ffffff80;
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
+        position: relative;
+        overflow: hidden;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: #ffffffa8;
+        border: 1px solid #ffffffb0;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+      }
+      .badge .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 22px;
+        align-items: stretch;
+      }
+      @media (max-width: 860px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      h1 {
+        margin: 16px 0 10px;
+        font-size: clamp(30px, 4vw, 46px);
+        line-height: 1.08;
+      }
+      .sub {
+        font-size: clamp(15px, 1.8vw, 18px);
+        line-height: 1.6;
+        opacity: 0.9;
+        margin: 0 0 18px;
+      }
+      .loveNote {
+        background: #fff;
+        border: 1px dashed #ff78a3;
+        border-radius: 18px;
+        padding: 16px 16px;
+        margin: 16px 0 0;
+      }
+      .loveNote strong {
+        color: var(--accent);
+      }
+      .mini {
+        font-size: 14px;
+        opacity: 0.85;
+        margin-top: 10px;
+      }
+
+      .appriciationNote {
+        background: #fff;
+        border: 1px dashed #ff78a3;
+        border-radius: 18px;
+        padding: 16px 16px;
+        margin: 16px 0 0;
+      }
+      .appriciationNote strong {
+        color: var(--accent);
+      }
+      .mini {
+        font-size: 14px;
+        opacity: 0.85;
+        margin-top: 10px;
+      }
+
+      .right {
+        background: #ffffffa6;
+        border: 1px solid #ffffffc0;
+        border-radius: 22px;
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .polaroid {
+        background: #fff;
+        border-radius: 18px;
+        padding: 10px 10px 14px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        border: 1px solid #f0f0f0;
+      }
+      .polaroid .img {
+        height: 240px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #ffe4e9, #f3e8ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6b7280;
+        font-weight: 600;
+        text-align: center;
+        padding: 14px;
+      }
+      .polaroid .cap {
+        margin-top: 10px;
+        text-align: center;
+        font-family: "Segoe Script", "Brush Script MT", cursive;
+        font-size: 22px;
+        color: #111827;
+      }
+
+      .questionBox {
+        margin-top: 16px;
+        padding: 16px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #fff, #fff0f6);
+        border: 1px solid #ffd1e1;
+      }
+      .question {
+        font-weight: 800;
+        font-size: 22px;
+        margin: 0 0 12px;
+      }
+
+      .btnRow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        position: relative;
+        min-height: 56px;
+      }
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 12px 18px;
+        font-weight: 800;
+        cursor: pointer;
+        transition:
+          transform 0.08s ease,
+          filter 0.15s ease;
+        user-select: none;
+        touch-action: manipulation;
+      }
+      button:active {
+        transform: scale(0.98);
+      }
+      .yes {
+        background: linear-gradient(135deg, var(--accent), #ff7aa8);
+        color: white;
+        box-shadow: 0 10px 24px rgba(255, 59, 122, 0.28);
+      }
+      .no {
+        background: #111827;
+        color: white;
+        position: relative;
+        touch-action: manipulation;
+      }
+      .hint {
+        margin-top: 12px;
+        font-size: 13px;
+        opacity: 0.8;
+      }
+
+      /* modal */
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 50;
+      }
+      .modal.show {
+        display: flex;
+      }
+      .modalCard {
+        width: min(560px, 100%);
+        background: #fff;
+        border-radius: 24px;
+        padding: 22px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+      }
+      .big {
+        font-size: clamp(30px, 4vw, 44px);
+        margin: 6px 0 10px;
+      }
+      .plan {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #374151;
+      }
+      .close {
+        margin-top: 16px;
+        background: linear-gradient(135deg, #7c3aed, #ff3b7a);
+        color: #fff;
+        padding: 12px 18px;
+      }
+
+      /* confetti */
+      .confetti {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 60;
+        overflow: hidden;
+        display: none;
+      }
+      .confetti.show {
+        display: block;
+      }
+      .piece {
+        position: absolute;
+        width: 10px;
+        height: 14px;
+        opacity: 0.95;
+        transform: translateY(-10vh);
+        animation: fall linear forwards;
+        border-radius: 3px;
+      }
+      @keyframes fall {
+        to {
+          transform: translateY(110vh) rotate(720deg);
+        }
+      }
+      /* ===== Mobile improvements ===== */
+      html,
+      body {
+        width: 100%;
+      }
+
+      .wrap {
+        width: min(920px, 100%);
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      /* Make right column spacing nicer on small screens */
+      @media (max-width: 860px) {
+        body {
+          padding: 14px;
+          align-items: flex-start;
+        }
+
+        .card {
+          padding: 18px;
+          border-radius: 20px;
+        }
+
+        .right {
+          padding: 14px;
+        }
+
+        /* Polaroid image becomes responsive */
+        .polaroid .img {
+          height: 220px; /* smaller on mobile */
+        }
+
+        /* Prevent "No" button from escaping and causing overlaps on mobile */
+        .btnRow {
+          min-height: 120px; /* extra room if No moves */
+          padding-bottom: 10px;
+        }
+
+        button {
+          width: 100%; /* stack buttons */
+          justify-content: center;
+        }
+
+        .yes,
+        .no {
+          padding: 14px 18px;
+          font-size: 16px;
+        }
+
+        /* Make the "No" button movement feel better on mobile */
+        .no {
+          position: relative; /* default */
+        }
+
+        .hint {
+          font-size: 12px;
+        }
+      }
+
+      /* Extra small phones */
+      @media (max-width: 420px) {
+        .badge {
+          font-size: 13px;
+        }
+
+        h1 {
+          font-size: 30px;
+        }
+
+        .question {
+          font-size: 20px;
+        }
+
+        .polaroid .cap {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- floating hearts -->
+    <div id="hearts"></div>
+
+    <div class="wrap">
+      <div class="card">
+        <div class="badge">
+          <span class="dot"></span> A tiny webpage made with big love
+        </div>
+
+        <div class="grid">
+          <div>
+            <h1>Hi <span id="hisName">My Love Dhabbe.......</span> 💖</h1>
+            <p class="sub">
+              I built this little page just to remind you that you’re my Most
+              Importanat person — my calm, my chaos, my best friend… and my
+              forever and my everything.
+            </p>
+
+            <div class="loveNote">
+              <div>
+                <strong>From:</strong> <span id="yourName">Your Valentine</span>
+              </div>
+              <div class="mini" id="customLine">
+                I choose you. Today, tomorrow, and all the days after and
+                forever.
+              </div>
+            </div>
+
+            <div class="loveNote" style="margin-top: 14px">
+              <div><strong>Reasons I love you:</strong></div>
+              <ul style="margin: 10px 0 0; line-height: 1.7">
+                <li>You’re my safe place.</li>
+                <li>You're the most understanding person I know.</li>
+                <li>You always make me feel loved and appreciated.</li>
+              </ul>
+              <div class="mini">(P.S. I have about a million more.)</div>
+            </div>
+
+            <div class="appriciationNote" style="margin-top: 14px">
+              <div><strong>Little Appriciation</strong></div>
+              <ul style="margin: 10px 0 0; line-height: 1.7">
+                I'm so proud of you for managing everything so well.
+                <li>
+                  Your dedication to your work and studies is truly admirable.
+                </li>
+                <li>
+                  Your ability to balance multiple responsibilities shows your
+                  strength and resilience.
+                </li>
+                <li>
+                  Your hard work is inspiring and motivates me to be better
+                  every day.
+                </li>
+              </ul>
+              <div class="mini">(Keep shining, love!)</div>
+            </div>
+          </div>
+
+          <div class="right">
+            <div class="polaroid">
+              <div class="img" id="photoBox">
+                Add a photo here 📷<br />
+                (optional — instructions below)
+              </div>
+              <div class="cap">Us🧿✨</div>
+            </div>
+
+            <div class="questionBox">
+              <p class="question">Will you be my Valentine?</p>
+              <div class="btnRow" id="btnRow">
+                <button class="yes" id="yesBtn">YES 💘</button>
+                <button class="no" id="noBtn">No 🙈</button>
+              </div>
+              <div class="hint">Tip: try clicking “No” 😄</div>
+            </div>
+
+            <div class="loveNote" style="margin-top: 16px">
+              <div><strong>Our date plan:</strong></div>
+              <div class="mini" id="datePlan">
+                Dinner + dessert + a long walk (and you choosing the movie)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+      <div class="modalCard">
+        <div style="font-size: 48px">🥰🎉💞💋</div>
+        <div class="big">YAY! It’s a date!</div>
+        <p class="plan" id="modalText">
+          I can’t wait to celebrate with you. Happy Valentine’s Day, my love.
+        </p>
+        <button class="close" id="closeBtn">Aww ❤️</button>
+      </div>
+    </div>
+
+    <!-- Confetti -->
+    <div class="confetti" id="confetti"></div>
+
+    <script>
+      // ===== Customize these =====
+      const SETTINGS = {
+        hisName: "Dhabbe 🤪", // <-- change
+        yourName: "Harshada", // <-- change
+        customLine:
+          "I choose you. Today, tomorrow, and all the days after and forever.", // <-- change
+        datePlan: "Dinner + dessert + a long walk (and you choosing the movie)",
+        modalText:
+          "I can’t wait to celebrate with you. Happy Valentine’s Day, my love.",
+        photoUrl: "US.jpg",
+      };
+
+      // Apply text
+      document.getElementById("hisName").textContent = SETTINGS.hisName;
+      document.getElementById("yourName").textContent = SETTINGS.yourName;
+      document.getElementById("customLine").textContent = SETTINGS.customLine;
+      document.getElementById("datePlan").textContent = SETTINGS.datePlan;
+      document.getElementById("modalText").textContent = SETTINGS.modalText;
+
+      // Optional photo
+      if (SETTINGS.photoUrl) {
+        const box = document.getElementById("photoBox");
+        box.style.height = "400px";
+        box.style.background = `center / cover no-repeat url('${SETTINGS.photoUrl}')`;
+        box.textContent = "";
+      }
+
+      // Floating hearts generator
+      const hearts = document.getElementById("hearts");
+      const heartCount = 18;
+      for (let i = 0; i < heartCount; i++) {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.animationDuration = 6 + Math.random() * 8 + "s";
+        h.style.animationDelay = -Math.random() * 10 + "s";
+        h.style.transform = `translateY(${100 + Math.random() * 50}vh) rotate(45deg)`;
+        h.style.opacity = 0.12 + Math.random() * 0.18;
+        hearts.appendChild(h);
+      }
+
+      // No button runs away 😄
+      const noBtn = document.getElementById("noBtn");
+      const btnRow = document.getElementById("btnRow");
+
+      function moveNoButton() {
+        const rowRect = btnRow.getBoundingClientRect();
+        const btnRect = noBtn.getBoundingClientRect();
+
+        const maxX = rowRect.width - btnRect.width;
+        const maxY = rowRect.height - btnRect.height;
+
+        // const maxY = 56; // keep it in the row area
+
+        const x = Math.max(0, Math.min(maxX, Math.random() * maxX));
+        //const y = Math.random() * maxY;
+        const y = Math.max(0, Math.min(maxY, Math.random() * maxY));
+
+        noBtn.style.position = "absolute";
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+      }
+
+      // noBtn.addEventListener("mouseenter", moveNoButton);
+      // noBtn.addEventListener("click", moveNoButton);
+      // noBtn.addEventListener("touchstart", (e) => {
+      //   e.preventDefault(); // stop accidental click
+      //   moveNoButton();
+      // });
+      noBtn.addEventListener("pointerenter", moveNoButton);
+      noBtn.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
+        moveNoButton();
+      });
+
+      // YES => modal + confetti
+      const yesBtn = document.getElementById("yesBtn");
+      const modal = document.getElementById("modal");
+      const closeBtn = document.getElementById("closeBtn");
+      const confetti = document.getElementById("confetti");
+
+      function launchConfetti() {
+        confetti.innerHTML = "";
+        confetti.classList.add("show");
+
+        const pieces = 140;
+        for (let i = 0; i < pieces; i++) {
+          const p = document.createElement("div");
+          p.className = "piece";
+          p.style.left = Math.random() * 100 + "vw";
+          p.style.top = -10 - Math.random() * 20 + "vh";
+          p.style.animationDuration = 2.8 + Math.random() * 2.6 + "s";
+          p.style.animationDelay = Math.random() * 0.3 + "s";
+          p.style.background = `hsl(${Math.random() * 360}, 85%, 65%)`;
+          p.style.width = 8 + Math.random() * 8 + "px";
+          p.style.height = 10 + Math.random() * 10 + "px";
+          p.style.opacity = 0.85 + Math.random() * 0.15;
+          p.style.animationName = "fall";
+          confetti.appendChild(p);
+        }
+
+        setTimeout(() => confetti.classList.remove("show"), 4200);
+      }
+
+      yesBtn.addEventListener("click", () => {
+        launchConfetti();
+        modal.classList.add("show");
+      });
+
+      closeBtn.addEventListener("click", () => modal.classList.remove("show"));
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.remove("show");
+      });
+    </script>
+  </body>
+</html>
